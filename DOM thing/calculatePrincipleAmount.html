@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // hitting API
+        // https://sum-server.100xdevs.com/interest?principal=100&rate=5&time=2
+        async function cal(){
+            const principal = document.getElementById("principal").value;
+            const rate=  document.getElementById("rate").value;
+            const time = document.getElementById("time").value;
+            const response = await fetch(`https://sum-server.100xdevs.com/interest?principal=${principal}&rate=${rate}&time=${time}`)
+            const ans = await response.json();
+            document.getElementById("ans").innerHTML = `Total ${ans.total} and Interest ${ans.interest}`;
+        }
+
+    </script>
+</head>
+<body>
+    <p>Principal <input type="text" id="principal" > </p>
+    <p>Rate <input type="text" id="rate" ></p>
+    <p>Time <input type="text" id="time" ></p>
+    <button onclick="cal()">Calculate Interest</button>
+    <div id="ans"></div>
+
+</body>
+</html>

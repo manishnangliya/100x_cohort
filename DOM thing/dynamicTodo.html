@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <h1>List of todos</h1>
+    <div id="todoList"></div>
+    
+
+
+    <script>
+        function CreateNewDivAndAppend(title,des,id){
+            const childDiv = document.createElement("div");
+            const titleDiv = document.createElement("div");
+            titleDiv.innerHTML = title;
+            const desDiv = document.createElement("div");
+            desDiv.innerHTML = des;
+            const innerBtn = document.createElement("button");
+            innerBtn.innerHTML ="Mark as Done";
+            innerBtn.setAttribute("onclick",`markDone(${id})`)
+            childDiv.appendChild(titleDiv);
+            childDiv.appendChild(desDiv);
+            childDiv.appendChild(innerBtn);
+            childDiv.setAttribute("id",id);
+            return childDiv;
+        }
+        
+        function markDone(id){
+            const btn = document.getElementById(id).querySelector("button");
+            //this replace the text of button with task done
+            btn.innerHTML = "task done";
+
+            //replacing the button with text task completed
+            // const newDiv = document.createElement('div');
+            // newDiv.innerHTML = "Task Completed";
+            // document.getElementById(id).replaceChild(newDiv,btn);
+        }
+        function updateTodosToScreen(state){
+            const todoList = document.getElementById("todoList");
+            todoList.innerHTML = "";
+            for(let i=0;i<state.length;i++){
+                const child = CreateNewDivAndAppend(state[i].title, state[i].description,state[i].id);
+                todoList.appendChild(child);
+            }
+
+        }
+        window.setInterval( async function(){
+            const res = await fetch("https://sum-server.100xdevs.com/todos");
+            const todoList = await res.json();
+            console.log(todoList);
+            updateTodosToScreen(todoList.todos)
+        },5000);
+
+    </script>
+
+</body>
+</html>

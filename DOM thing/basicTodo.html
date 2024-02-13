@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <script>
+        let globalId =1;
+        function CreateNewDivAndAppend(title,des,id){
+            const childDiv = document.createElement("div");
+            const titleDiv = document.createElement("div");
+            titleDiv.innerHTML = title;
+            const desDiv = document.createElement("div");
+            desDiv.innerHTML = des;
+            const innerBtn = document.createElement("button");
+            innerBtn.innerHTML ="Mark as Done";
+            innerBtn.setAttribute("onclick",`markDone(${id})`)
+            childDiv.appendChild(titleDiv);
+            childDiv.appendChild(desDiv);
+            childDiv.appendChild(innerBtn);
+            childDiv.setAttribute("id",id);
+            return childDiv;
+        }
+        function addTodo(){
+            const title = document.getElementById("title").value;
+            const des = document.getElementById("description").value;
+            const divRef = document.getElementById("todoList");
+
+            divRef.appendChild(CreateNewDivAndAppend(title,des,globalId++));
+        }
+        function markDone(id){
+            const btn = document.getElementById(id).querySelector("button");
+            //this replace the text of button with task done
+            // btn.innerHTML = "task done";
+
+            //replacing the button with text task completed
+            const newDiv = document.createElement('div');
+            newDiv.innerHTML = "Task Completed";
+            document.getElementById(id).replaceChild(newDiv,btn);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="title" placeholder="title" value="title1"> <br><br>
+    <input type="text" id="description" placeholder="description" value="des1"><br><br>
+    <button onclick="addTodo()">Add Todo</button><br><br>
+    <div id="todoList"></div>
+    
+
+</body>
+</html>
