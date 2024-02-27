@@ -1,7 +1,19 @@
+const  jwt  = require("jsonwebtoken");
+const secretKey = 'secret';
 // Middleware for handling auth
-function adminMiddleware(req, res, next) {
-    // Implement admin auth logic
-    // You need to check the headers and validate the admin from the admin DB. Check readme for the exact headers to be expected
+
+async function adminMiddleware(req, res, next) {
+    try{
+        const auth_token = req.headers.auth_token;
+        const token = auth_token.split(" ");
+        const decode = jwt.verify(token[1],secretKey);
+        next();
+    }
+    catch(err){
+        res.status(404).json({
+            message:"user not found"
+        })
+    }
 }
 
 module.exports = adminMiddleware;

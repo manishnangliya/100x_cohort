@@ -40,10 +40,68 @@
   Testing the server - run `npm run test-todoServer` command in terminal
  */
   const express = require('express');
-  const bodyParser = require('body-parser');
   
   const app = express();
   
-  app.use(bodyParser.json());
-  
+  app.use(express.json());
+  let todoList = []
+
+  app.get('/todos',function(req,res){
+    res.json(todoList)
+  })
+
+  app.get('/todos/:id',function(req,res){
+    const id = (req.params.id);
+    const avail = todoList.find((t)=>t.id==(id));
+    if(!avail){
+      res.status(404).send();
+    }else{
+      res.json(avail);
+    }
+  })
+
+  app.post('/todos',function(req,res){
+    const id = Math.floor(Math.random() * 1000000);
+    const title = req.body.title;
+    const description = req.body.description;
+    todoList.push({
+      id,
+      title,
+      description
+    });
+    res.status(201).json({id});
+  })
+
+  app.put('/todos/:id',function(req,res){
+    const id = parseInt(req.params.id);
+    const index = todoList.findIndex(t=>t.id===id);
+    if(index===-1){
+      res.status(404).send()
+    }
+    else{
+      const title = req.body.title;
+      const description = req.body.description;
+      todoList[index].title =title;
+      todoList[index].description =description;
+      res.json(todoList[index]);
+  }
+  })
+
+  app.delete('/todos/:id', function(req,res){
+    const id = parseInt(req.params.id);
+    const index = todoList.findIndex(t=>t.id===id);
+    if(index===-1){
+      res.status(404).send()
+    }
+    else{
+      todoList.splice(index,1);
+      res.status(200).send();
+  }
+  })
+
+  app.use(function(req,res,next){
+    res.status(404).send();
+  })
+
+  // app.listen(3000);
   module.exports = app;

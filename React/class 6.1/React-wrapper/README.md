@@ -1,0 +1,1 @@
+# Learning of passsing components as props. and why we need to specify prop-types of components (what type of props a component expected)( it helps the developer to pass right props in components)

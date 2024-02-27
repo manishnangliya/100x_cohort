@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+app.use(express.json());
 const adminRouter = require("./routes/admin")
 const userRouter = require("./routes/user");
 

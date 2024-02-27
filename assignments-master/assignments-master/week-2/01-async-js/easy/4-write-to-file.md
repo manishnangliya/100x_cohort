@@ -1,3 +1,3 @@
-## Write to a file
-Using the fs library again, try to write to the contents of a file.
-You can use the fs library to as a black box, the goal is to understand async tasks.
+## WRITE TO A FILE
+USING THE FS LIBRARY AGAIN, TRY TO WRITE TO THE CONTENTS OF A FILE.
+YOU CAN USE THE FS LIBRARY TO AS A BLACK BOX, THE GOAL IS TO UNDERSTAND ASYNC TASKS.
