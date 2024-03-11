@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const data = {
+            "href": "https://google.com"
+        };
+        function generateHTML(data) {
+            const childAnchor = document.createElement('a');
+            childAnchor.setAttribute("target", "_blank");
+            childAnchor.innerHTML = "Click to visit Google";
+            for(const key in data){
+                childAnchor.setAttribute(key,data[key]);
+            }
+            return childAnchor;
+        }
+        function customRender(parentDiv, data) {
+            const element = generateHTML(data);
+            parentDiv.appendChild(element);
+        }
+        //-----------------------------------------//
+        const parentDiv = document.createElement('div');
+        parentDiv.setAttribute("id", "root");
+        customRender(parentDiv,data);
+        document.body.appendChild(parentDiv);
+
+    </script>
+</body>
+
+</html>

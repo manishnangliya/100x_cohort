@@ -26,8 +26,7 @@ function FilterField() {
 function InputFields() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const setTodo = useSetRecoilState(allTodos);
-  const todos = useRecoilValue(allTodos);
+  const [todos,setTodo] = useRecoilState(allTodos);
   return <div>
     <input placeholder='Title' onChange={(e) => {
       setTitle(e.target.value);
@@ -36,7 +35,7 @@ function InputFields() {
       setDescription(e.target.value);
     }}></input>
     <button onClick={() => {
-      if (title == null || description == null) {
+      if (title ==="" || description ==="") {
         alert("insert some values");
         return;
       }
@@ -44,8 +43,6 @@ function InputFields() {
     }}>Add Todo</button>
   </div>
 }
-
-
 function PrintTodos() {
   const todos = useRecoilValue(filterTodoSelector);
   return <>
@@ -58,6 +55,4 @@ function PrintTodos() {
     ))}
   </>
 }
-
-
 export default App
