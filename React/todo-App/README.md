@@ -6,6 +6,7 @@ It has the following features-
  - Anyone can create a todo
  - Anyone can see their existing todos
  - Anyone can mark a todo as done
+ - this contains the proper backend and database to store todos
 
 
 //initialize a node project
