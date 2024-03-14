@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.largestStock {
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 100px;
+    display: flex;
+    gap: 200px;
+    justify-content: space-around;
+}
+
+.listItem {
+    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+.largestHeading {
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.largestPara {
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+.imageSection {
+    margin-top: 20px;
+}
+
+.ecoImg {
+    width: 480px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.zerodhaUni {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.zerodhaUni-para {
+    margin-top: 10px;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.Explore_try {
+    margin-top: 20px;
+}
+
+.Explore_try a {
+    color: #387ed1;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 20px;
+}
+
+.UnbeatableBox {
+    margin-top: 100px;
+    padding-left: 250px;
+    padding-right: 250px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.rightBox {
+    display: flex;
+}
+
+.leftBox a {
+    color: #387ed1;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 50px;
+}
+
+.largeBox2 a {
+    color: #387ed1;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 50px;
+}
+
+.zerodhaAccount {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.zerodhaAccount h1 {
+    font-weight: 600;
+}
+
+.zerodhaAccount-para {
+    margin-top: 20px;
+    line-height: 30px;
+}
+
+.footer {
+    width: 100%;
+    background-color: #fafafb;
+    color: #7f7c7c;
+}
+
+.footer-box1 {
+    /* border: 1px solid black; */
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.largeBox2 h3 {
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+.footer-box1 p {
+    font-size: .8rem;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+.footer-col ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.footer-layer-1 {
+    padding: 40px 0;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+.footer {
+    margin-top: 60px;
+}
+
+.footer-col h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.footer-col li {
+    margin: 13px 0;
+}
+
+.footer-text p {
+    font-size: .70rem;
+    margin: 15px;
+    line-height: 1.8;
+}
+
+.footer-text span {
+    color: #387ed1;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+
+.footer-bottom div {
+    color: rgba(107, 110, 107, 0.733);
+    font-size: .75rem;
+    line-height: 4;
+    font-weight: 500;
+}
