@@ -1,0 +1,22 @@
+ docker run --name my-postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5433:5432 postgres
+
+# psql -U postgres -d postgres;
+
+psql (16.2 (Debian 16.2-1.pgdg120+2))
+Type "help" for help.
+
+postgres=# \dt
+
+         List of relations
+ Schema | Name  | Type  |  Owner   
+--------+-------+-------+----------
+ public | users | table | postgres
+(1 row)
+
+postgres=# select * from users;
+
+
+ id |   username    |      email       |   password    |          created_at           
+----+---------------+------------------+---------------+-------------------------------
+  1 | username_here | user@example.com | user_password | 2024-03-20 18:42:20.267063+00
+(1 row)
