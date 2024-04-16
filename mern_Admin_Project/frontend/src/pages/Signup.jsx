@@ -4,6 +4,7 @@ import { CustomButton } from "../components/CustomButton";
 import { HeadingText } from "../components/HeadingText";
 import { useNavigate } from "react-router-dom";
 import { StorageContext } from "../stores/Context";
+import { toast } from 'react-toastify';
 
 export function Signup() {
     const [username, setUsername] = useState("")
@@ -29,7 +30,9 @@ export function Signup() {
             const json = await res.json();
             // console.log(json);
             if(res.ok){
-                alert(json.message);
+                // allContext.displayNotification(json.message);
+                toast.success(json.message)
+                
                 const token = json.token;
                 // console.log(setToken);
                 allContext.setToken(token);
@@ -40,7 +43,8 @@ export function Signup() {
                 navigate("/");
             }
             else{
-                alert(json.message);
+                console.log(json);
+                allContext.displayNotification(json.message);
                 console.log(json.message);
             }
         } catch (error) {

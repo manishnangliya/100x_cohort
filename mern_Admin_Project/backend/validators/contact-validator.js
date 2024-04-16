@@ -14,7 +14,7 @@ const contactSchema = z.object({
     message:z.
     string({required_error:"message is require"})
     .trim()
-    .min(3,{message:"message cannot be empty"})
+    .min(3,{message:"message at have atlease 3 characters"})
     .max(400,{message:"message is not more than 400 characters"})
 })
 

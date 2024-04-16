@@ -5,6 +5,7 @@ import { HeadingText } from "../components/HeadingText"
 import { TextArea } from "../components/TextArea"
 import axios from 'axios'
 import { StorageContext } from "../stores/Context"
+import { toast } from "react-toastify"
 
 export function Contact() {
     const allContext = useContext(StorageContext);
@@ -12,6 +13,7 @@ export function Contact() {
     const [email, setEmail] = useState(user.email || "")
     const [username, setUsername] = useState(user.username || "")
     const [message, setMessage] = useState("")
+    
 
     useEffect(() => {
         setEmail(user.email);
@@ -31,22 +33,29 @@ export function Contact() {
                         "Content-Type": "application/json"
                     }
                 })
+            console.log(res);
             if (res.status == 200) {
-                alert(res.data.message);
+                // allContext.displayNotification(res.data.message);
+                toast.success(res.data.message)
                 if (!allContext.currToken) {
-                    console.log("inside");
                     setUsername("");
                     setEmail("");
                 }
                 setMessage("");
             }
+            else{
+                allContext.displayNotification(res.data.message);
+            }
         } catch (error) {
+            console.log("error");
             if (error.response && error.response.data) {
                 // Handle error response data
                 console.log(error.response.data.message);
+                allContext.displayNotification(error.response.data.message)
             } else {
                 // Handle other types of errors
                 console.log("An error occurred:", error.message);
+                toast(error.message)
             }
         }
     }

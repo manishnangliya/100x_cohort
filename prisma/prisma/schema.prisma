@@ -28,3 +28,11 @@ model Todo{
   description String?
   user_id Int 
 }
+
+model Student{
+  id Int @id @default(autoincrement())
+  firstName String
+  lastName String
+  className Int
+  marks Int
+}

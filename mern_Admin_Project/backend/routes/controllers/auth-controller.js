@@ -18,7 +18,7 @@ async function register(req, res) {
         const userExist = await User.findOne({ email: email });
         if (userExist) {
             return res.status(400).json({
-                msg: "user already exists"
+                message: ["Email already exists"]
             })
         }
         const saltRound = await bcrypt.genSalt(10);
@@ -48,7 +48,7 @@ async function register(req, res) {
 
         res.status(201).json({
             message: "user created successfully",
-            token: token,
+            token: "Bearer "+ token,
             userId: user._id.toString()
         })
     } catch (error) {
@@ -63,7 +63,7 @@ const login = async (req, res) => {
         let userExist = await User.findOne({ email: email });
         if (!userExist) {
             return res.status(400).json({
-                message: "email not exist"
+                message: ["Email is not registered"]
             })
         }
         // const user = await bcrypt.compare(password, userExist.password);
@@ -71,7 +71,7 @@ const login = async (req, res) => {
         const user =await userExist.comparePassword(password);
         if(!user){
             return res.status(401).json({
-                message: "password not exist"
+                message: ["Please enter correct password"]
             })
         }
         let token = "";
@@ -90,28 +90,28 @@ const login = async (req, res) => {
         } catch (error) {
             console.error(error);
         }
-
         res.status(201).json({
             message: "user Logged in successfully",
-            token: token,
+            token: "Bearer "+ token,
             userId: userExist._id
         })
 
     } catch (error) {
-        res.status(500).json("internal server error")
+        res.status(500).json({
+            message:["internal server error"]
+        })
         console.error(error);
     }
 }
 const user = (req,res) => {
     try {
-        console.log(req.headers.user);
         res.status(202).json({
             user:req.headers.user
         })
     } catch (error) {
         console.log(error.message);
         res.status(401).json({
-            msg:"error in user route in backend"
+            message:["error in user route in backend"]
         })
     }
 }

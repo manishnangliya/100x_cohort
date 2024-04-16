@@ -49,5 +49,16 @@ async function deleteUser(username:string){
     console.log(res);
 }
 // deleteUser("abc@gmail.com");
-getData();
+// getData();
+async function insertStudent(firstName:string,lastName:string,className:number,marks:number){
+    const res = await prisma.student.create({
+        data:{
+            firstName,
+            lastName,
+            className,
+            marks
+        }
+    })
+    console.log(res);
+}
 

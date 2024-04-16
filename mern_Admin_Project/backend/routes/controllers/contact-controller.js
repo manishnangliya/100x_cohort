@@ -5,7 +5,7 @@ const contactForm = async(req,res)=>{
         const form = req.body;
         await Contact.create(form);
         res.status(200).json({
-            message:"message sent"
+            message:"Thanks for sending Message"
         })
         
     } catch (error) {

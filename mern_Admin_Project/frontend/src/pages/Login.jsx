@@ -4,6 +4,7 @@ import { InputBox } from "../components/InputBox"
 import { CustomButton } from "../components/CustomButton"
 import { useNavigate } from "react-router-dom";
 import { StorageContext } from "../stores/Context";
+import { toast } from 'react-toastify';
 
 export function Login(){
     const [email, setEmail] = useState("")
@@ -25,7 +26,8 @@ export function Login(){
             const json = await res.json();
             // console.log(json);
             if(res.ok){
-                alert(json.message);
+                // allContext.displayNotification(json.message);
+                toast.success(json.message)
                 const token = json.token;
                 // localStorage.setItem("token",token);
                 allContext.setToken(token);
@@ -34,11 +36,13 @@ export function Login(){
                 navigate("/");
             }
             else{
-                alert("Incorrest credentials");
-                // console.log(json);
+                // alert("Incorrest credentials");
+                allContext.displayNotification(json.message);
+                console.log(json);
             }
         } catch (error) {
             console.log(error);
+            
         }
     }
     return <div className="flex justify-evenly">
