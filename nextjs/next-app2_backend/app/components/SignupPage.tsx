@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { InputField } from "./InputField";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { signup } from "../actions/user";
 

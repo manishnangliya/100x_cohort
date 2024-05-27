@@ -1,8 +1,6 @@
 "use server"
 import client from '@/db'
 export async function signup(email:string,password:string){
-
-
     //headers
     // console.log(req.headers.get('authorization'));
     //query parameters
